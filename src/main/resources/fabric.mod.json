@@ -3,15 +3,15 @@
     "id": "gloopy",
     "version": "${version}",
     "name": "Gloopy",
-    "description": "Decorative sandy blocks.",
+    "description": "Decorative sandy blocks...",
     "authors": [
         "DigitalPear",
         "0xJoeMama"
     ],
     "contact": {
-        "homepage": "",
-        "issues": "",
-        "sources": ""
+        "homepage": "https://www.curseforge.com/minecraft/mc-mods/gloopy",
+        "issues": "https://github.com/LlamaramaTeam/Gloopy-Fabric/issues",
+        "sources": "https://github.com/LlamaramaTeam/Gloopy-Fabric"
     },
     "license": "MIT",
     "icon": "assets/gloopy/icon.png",
