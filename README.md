@@ -1,6 +1,22 @@
 # Gloopy
-Adds the ability to create decorative floating blocks out of blocks normally affected by gravity.
+Adds the ability to create decorative floating blocks out of blocks normally affected by gravity.  
 All the blocks keeps their original properties except being affected by gravity.
+
+# Content
+
+## Gloopy Concrete Powder
+If you apply a [Honey Bottle](https://minecraft.fandom.com/wiki/Honey_Bottle) on a [Concrete Powder](https://minecraft.fandom.com/wiki/Concrete_Powder) block, it will show particles.  
+Congratulations! You now have a gloopy concrete powder block. This block, looks the same  
+as its normal counterpart, but it isn't affected by gravity.
+
+*-Oh no! I destroyed something because I made a block gloopy!*  
+Worry not, because you can un-gloopify a block just by right-clicking it with a [Shovel](https://minecraft.fandom.com/wiki/Shovel).
+
+Keep in mind, breaking a gloopy block, will waste your honey and give you a normal block in return.  
+You need the [Silk Touch enchantment](https://minecraft.fandom.com/wiki/Silk_Touch) in order to get the actual gloopy block.
+
+---
+Enjoy!
 
 # Building the mod
 Clone this repository using:
