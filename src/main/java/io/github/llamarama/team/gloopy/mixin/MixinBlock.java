@@ -5,7 +5,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FallingBlock;
 import net.minecraft.state.StateManager;
-import org.lwjgl.opengl.GL;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -16,7 +15,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Block.class)
 public abstract class MixinBlock {
 
-    @Shadow private BlockState defaultState;
+    @Shadow
+    private BlockState defaultState;
 
     @Inject(method = "appendProperties", at = @At("TAIL"))
     private void addCustomProperty(StateManager.Builder<Block, BlockState> builder, CallbackInfo ci) {
