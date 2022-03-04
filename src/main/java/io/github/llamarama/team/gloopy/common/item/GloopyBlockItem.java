@@ -8,6 +8,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.FallingBlock;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtElement;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -16,6 +17,7 @@ import net.minecraft.util.registry.Registry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -37,7 +39,7 @@ public class GloopyBlockItem extends BlockItem {
 
     public static @NotNull ItemStack createBlockItemStack(@NotNull BlockState state, @NotNull Item item) {
         var stack = new ItemStack(item);
-        var stateNbt = BlockStateEncode.encode(state);
+        Optional<NbtElement> stateNbt = BlockStateEncode.encode(state);
         stateNbt.ifPresent(res -> stack.getOrCreateNbt().put("GloopyState", res));
         return stack;
     }

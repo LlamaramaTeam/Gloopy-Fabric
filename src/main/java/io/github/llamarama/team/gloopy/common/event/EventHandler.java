@@ -1,6 +1,7 @@
 package io.github.llamarama.team.gloopy.common.event;
 
 import io.github.llamarama.team.gloopy.Gloopy;
+import io.github.llamarama.team.gloopy.common.tag.ModBlockTags;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FallingBlock;
@@ -17,15 +18,16 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldEvents;
+import org.jetbrains.annotations.NotNull;
 
 public final class EventHandler {
 
-    public static ActionResult onBlockUse(PlayerEntity playerEntity, World world, Hand hand, BlockHitResult blockHitResult) {
+    public static ActionResult onBlockUse(@NotNull PlayerEntity playerEntity, @NotNull World world, Hand hand, @NotNull BlockHitResult blockHitResult) {
         BlockPos blockPos = blockHitResult.getBlockPos();
         BlockState blockState = world.getBlockState(blockPos);
         var handStack = playerEntity.getStackInHand(hand);
 
-        if (blockState.getBlock() instanceof FallingBlock) {
+        if (blockState.getBlock() instanceof FallingBlock && !ModBlockTags.isBlacklisted(blockState.getBlock())) {
             if (handStack.isOf(Items.HONEY_BOTTLE) && !blockState.get(Gloopy.GLOOPY)) {
                 if (playerEntity instanceof ServerPlayerEntity serverPlayer) {
                     Criteria.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, handStack);
@@ -58,6 +60,7 @@ public final class EventHandler {
                 return ActionResult.success(world.isClient);
             }
         }
+
 
         return ActionResult.PASS;
     }

@@ -33,14 +33,14 @@ public abstract class MixinItemEntry extends LeafEntry {
     @Inject(method = "generateLoot", at = @At("HEAD"), cancellable = true)
     private void createGloopyItems(Consumer<ItemStack> lootConsumer, @NotNull LootContext context, CallbackInfo ci) {
         BlockState state = context.get(LootContextParameters.BLOCK_STATE);
-        Optional.ofNullable(context.get(LootContextParameters.TOOL))
-                .filter(it -> EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, it) > 0)
-                .ifPresent(it -> {
-                    if (state != null && state.getBlock() instanceof FallingBlock && state.get(Gloopy.GLOOPY)) {
+        if (state != null && state.getBlock() instanceof FallingBlock && state.get(Gloopy.GLOOPY)) {
+            Optional.ofNullable(context.get(LootContextParameters.TOOL))
+                    .filter(it -> EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, it) > 0)
+                    .ifPresent(it -> {
                         lootConsumer.accept(GloopyBlockItem.createBlockItemStack(state, ModItems.GLOOPY_ITEM));
                         ci.cancel();
-                    }
-                });
+                    });
+        }
     }
 
 
