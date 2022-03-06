@@ -27,7 +27,7 @@ public final class EventHandler {
         BlockState blockState = world.getBlockState(blockPos);
         var handStack = playerEntity.getStackInHand(hand);
 
-        if (blockState.getBlock() instanceof FallingBlock && !ModBlockTags.isBlacklisted(blockState.getBlock())) {
+        if (blockState.getBlock() instanceof FallingBlock && !blockState.isIn(ModBlockTags.GLOOP_BLACKLIST)) {
             if (handStack.isOf(Items.HONEY_BOTTLE) && !blockState.get(Gloopy.GLOOPY)) {
                 if (playerEntity instanceof ServerPlayerEntity serverPlayer) {
                     Criteria.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, handStack);

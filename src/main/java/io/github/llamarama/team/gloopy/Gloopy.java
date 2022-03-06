@@ -31,7 +31,7 @@ public class Gloopy implements ModInitializer {
         ModItems.init();
         UseBlockCallback.EVENT.register(EventHandler::onBlockUse);
 
-        LOGGER.info("Let the gloop commence!");
+        Gloopy.getLogger().info("Let the gloop commence!");
     }
 
 }

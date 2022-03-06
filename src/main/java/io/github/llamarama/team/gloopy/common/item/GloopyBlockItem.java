@@ -64,7 +64,9 @@ public class GloopyBlockItem extends BlockItem {
 
     @Override
     public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
-        FALLING_BLOCK_STACKS.forEach(f -> stacks.add(f.apply(this)));
+        if (group == ItemGroup.BUILDING_BLOCKS) {
+            FALLING_BLOCK_STACKS.forEach(f -> stacks.add(f.apply(this)));
+        }
     }
 
 }
