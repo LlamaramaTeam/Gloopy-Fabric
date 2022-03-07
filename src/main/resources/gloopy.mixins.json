@@ -1,15 +1,16 @@
 {
-    "required": true,
-    "minVersion": "0.8",
-    "package": "io.github.llamarama.team.gloopy.mixin",
-    "compatibilityLevel": "JAVA_17",
-    "mixins": [
-        "MixinItem",
-        "MixinShovelItem"
-    ],
-    "client": [
-    ],
-    "injectors": {
-        "defaultRequire": 1
-    }
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.llamarama.team.gloopy.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "MixinBlock",
+    "MixinFallingBlock",
+    "MixinItemEntry"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
 }
