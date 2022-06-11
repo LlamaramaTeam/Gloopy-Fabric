@@ -8,31 +8,30 @@ import net.minecraft.block.FallingBlock;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtHelper;
-import net.minecraft.text.LiteralText;
+import net.minecraft.text.LiteralTextContent;
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.registry.Registry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Set;
+import java.util.List;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class GloopyBlockItem extends BlockItem {
 
     public static final String GLOOPY_STATE = "GloopyState";
-    private static final Set<Function<GloopyBlockItem, ItemStack>> FALLING_BLOCK_STACKS = Registry.BLOCK.stream()
+    private static final List<Function<GloopyBlockItem, ItemStack>> FALLING_BLOCK_STACKS = Registry.BLOCK.stream()
             .filter(it -> it instanceof FallingBlock)
             .map(it -> (FallingBlock) it)
             .map(Block::getStateManager)
-            .filter(it -> it.getProperties().contains(Gloopy.GLOOPY))
             .map(it -> (Function<GloopyBlockItem, ItemStack>) (item) ->
                     createBlockItemStack(it.getDefaultState().with(Gloopy.GLOOPY, true), item)
-            ).collect(Collectors.toSet());
+            ).toList();
 
     public GloopyBlockItem(Settings settings) {
-        super(Blocks.WHITE_WOOL, settings);
+        super(Blocks.SAND, settings);
     }
 
     public static @NotNull ItemStack createBlockItemStack(@NotNull BlockState state, @NotNull Item item) {
@@ -44,7 +43,7 @@ public class GloopyBlockItem extends BlockItem {
 
     @Override
     public Text getName(@NotNull ItemStack stack) {
-        var mutableText = new LiteralText("Gloopy ");
+        var mutableText = MutableText.of(new LiteralTextContent("Gloopy "));
         mutableText.append(NbtHelper.toBlockState(stack.getOrCreateSubNbt(GLOOPY_STATE)).getBlock().getName());
 
         return mutableText;
@@ -52,7 +51,7 @@ public class GloopyBlockItem extends BlockItem {
 
     @Override
     public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
-        if (group == ItemGroup.BUILDING_BLOCKS) {
+        if (this.isIn(group)) {
             FALLING_BLOCK_STACKS.forEach(f -> stacks.add(f.apply(this)));
         }
     }

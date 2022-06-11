@@ -17,7 +17,6 @@ public class Gloopy implements ModInitializer {
     public static final BooleanProperty GLOOPY = BooleanProperty.of("gloopy");
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    @Contract("_ -> new")
     public static @NotNull Identifier mod(String path) {
         return new Identifier(MOD_ID, path);
     }
