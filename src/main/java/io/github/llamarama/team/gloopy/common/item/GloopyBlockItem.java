@@ -60,7 +60,15 @@ public class GloopyBlockItem extends BlockItem {
     @Override
     protected BlockState getPlacementState(@NotNull ItemPlacementContext context) {
         NbtCompound nbt = context.getStack().getOrCreateSubNbt(GLOOPY_STATE);
-        return NbtHelper.toBlockState(nbt);
+        Block block = NbtHelper.toBlockState(nbt).getBlock();
+
+        BlockState placementState = block.getPlacementState(context);
+
+        if (placementState == null || placementState.isAir()) {
+            return null;
+        }
+
+        return this.canPlace(context, placementState) ? placementState.with(Gloopy.GLOOPY, true) : null;
     }
 
 }
