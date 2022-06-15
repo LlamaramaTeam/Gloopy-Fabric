@@ -1,36 +1,36 @@
 {
-  "schemaVersion": 1,
-  "id": "gloopy",
-  "version": "${version}",
-  "name": "Gloopy",
-  "description": "Decorative sandy blocks...",
-  "authors": [
-    "DigitalPear",
-    "0xJoeMama"
-  ],
-  "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/gloopy",
-    "issues": "https://github.com/LlamaramaTeam/Gloopy-Fabric/issues",
-    "sources": "https://github.com/LlamaramaTeam/Gloopy-Fabric"
-  },
-  "license": "MIT",
-  "icon": "assets/gloopy/icon.png",
-  "environment": "*",
-  "entrypoints": {
-    "client": [
-      "io.github.llamarama.team.gloopy.client.GloopyClient"
+    "schemaVersion": 1,
+    "id": "gloopy",
+    "version": "${version}",
+    "name": "Gloopy",
+    "description": "Decorative sandy blocks...",
+    "authors": [
+        "DigitalPear",
+        "0xJoeMama"
     ],
-    "main": [
-      "io.github.llamarama.team.gloopy.Gloopy"
-    ]
-  },
-  "mixins": [
-    "gloopy.mixins.json"
-  ],
-  "depends": {
-    "fabricloader": ">=0.11.3",
-    "fabric": "*",
-    "minecraft": "1.18.2",
-    "java": ">=17"
-  }
+    "contact": {
+        "homepage": "https://www.curseforge.com/minecraft/mc-mods/gloopy",
+        "issues": "https://github.com/LlamaramaTeam/Gloopy-Fabric/issues",
+        "sources": "https://github.com/LlamaramaTeam/Gloopy-Fabric"
+    },
+    "license": "MIT",
+    "icon": "assets/gloopy/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "client": [
+            "io.github.llamarama.team.gloopy.client.GloopyClient"
+        ],
+        "main": [
+            "io.github.llamarama.team.gloopy.Gloopy"
+        ]
+    },
+    "mixins": [
+        "gloopy.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.11.3",
+        "fabric": "*",
+        "minecraft": "1.19.x",
+        "java": ">=17"
+    }
 }
