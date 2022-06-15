@@ -37,7 +37,7 @@ public abstract class MixinItemEntry extends LeafEntry {
             Optional.ofNullable(context.get(LootContextParameters.TOOL))
                     .filter(it -> EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, it) > 0)
                     .ifPresent(it -> {
-                        lootConsumer.accept(GloopyBlockItem.createBlockItemStack(state, ModItems.GLOOPY_ITEM));
+                        lootConsumer.accept(GloopyBlockItem.createBlockItemStack(state.getBlock(), ModItems.GLOOPY_ITEM));
                         ci.cancel();
                     });
         }
